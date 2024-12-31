@@ -13,7 +13,7 @@ The Decision Tree and Random Forest Tree models are both supervised learning alg
 The dataset for this projec is obtained from the [UCI machine learning repository](https://archive.ics.uci.edu/dataset/597/productivity+prediction+of+garment+employees). The [dataset](Data/garments_worker_productivity.csv) contains several feature columns and the target variable `actual_productivity` which represents the actual percentage of the productivity that was delivered by the workers in the range of 0-1. 
 
 ## Exploratory Data Analysis 
-The following insighs were made by performing the EDA on the dataset:
+The following insights were made by performing the EDA on the dataset:
 
 - The feature columns `wip`,`over_time`,`incetive`,`idle_time`,`idle_men`,`no_of_workers` have very high maximum values which are way greater than than 75% percentile of the data, representing the presence of outliers in the data.
 - `wip` and `over_time `columns also have very less minimum values which are too lesser than the 25% percentile of data, convincing the  presence of strong  outliers.
@@ -24,5 +24,5 @@ The following insighs were made by performing the EDA on the dataset:
 - Analyzing the `incetive` column, which represents the financial incetive to motivates the action shows 50% of the data has no incetive to perform actions.
 - When comparing the `actual productivity` with the `targeted productivity`, there are observations with both instances where actual production was higher as well as lower than the target production for each team for each day,however 73% of the data have actual productivity greater than the targeted productivity.
 - 96% of times, when the `targeted productivity` was acheived or passed, employees had to work overtime to acheive the goal.
-- [Actual Vs Targeted ](Images/decision_tree_image1.png) shows time periods when the `actual productivity` acheived or passed the `targeted productivity` and when it did not.
+- [Actual Vs Targeted plot](Images/decision_tree_image1.png) shows time periods when the `actual productivity` acheived or passed the `targeted productivity` and when it did not.
 
