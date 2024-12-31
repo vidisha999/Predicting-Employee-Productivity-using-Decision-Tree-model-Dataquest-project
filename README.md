@@ -10,4 +10,8 @@ The Decision Tree and Random Forest Tree models are both supervised learning alg
 
 ## Data
 
-The dataset for this projec is obtained from the [UCI machine learning repository](https://archive.ics.uci.edu/dataset/597/productivity+prediction+of+garment+employees). The[dataset]() contains several feature columns and the target variable `actual_productivity` which represents the actual percentage of the productivity that was delivered by the workers in the range of 0-1. 
+The dataset for this projec is obtained from the [UCI machine learning repository](https://archive.ics.uci.edu/dataset/597/productivity+prediction+of+garment+employees). The [dataset](Data/garments_worker_productivity.csv) contains several feature columns and the target variable `actual_productivity` which represents the actual percentage of the productivity that was delivered by the workers in the range of 0-1. 
+
+## Exploratory Data Analysis 
+
+
