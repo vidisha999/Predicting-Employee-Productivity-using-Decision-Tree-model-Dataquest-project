@@ -60,6 +60,79 @@ The decision tree models can be used for two scenarios.
  - The **DecisionTreeRegressor** model could be used to predict the continuous value of target variable `targeted_productivity`.
  - The focus of this project is framed to use **DecisionTreeClassifier** for the classification task of target variable.
 
+Using the following code the DecisionTreeClasifier model was built: 
+
+```python
+from sklearn.tree import DecisionTreeClassifier,plot_tree
+X=final_df.drop(columns=['targeted_acheived','targeted_productivity'])
+y=final_df['targeted_productivity']
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2,random_state=72)
+class_tree=DecisionTreeClassifier(criterion='gini',random_state=72,max_depth=3)
+class_tree.fit(X_train,y_train)
+```
+## Model Optimization and Evaluation 
+
+### I.Minimum Cost Complexity Pruning 
+- The traning accuracy of the model was 82.3 % and the test accuracy of the model was 78.75 %. In order to improve the model's accuracy a post-pruning technique called **minimum cost complexity pruning** was used.
+- The minimum cost complexity pruning creates a diverse subtrees and finds the subtree with the highest scoring accuracy.
+
+
+The goal of using this cost path is to create diverse subtrees and to find the subtree with the highest scroing accuracy.
+The alpha value of the subtree with highest scoring accuracy is the optimal alpa value which is used to add a penalty for subtrees that overfits the data.
+
+The follwoing code is used to build the subset of pruned trees: 
+```python
+unpruned_tree=DecisionTreeClassifier()
+X_train,X_val,y_train,y_val=train_test_split(X,y,random_state=72, test_size=0.2)
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.2*X.shape[0]/X_train.shape[0],random_state=72)
+
+cost_path=unpruned_tree.cost_complexity_pruning_path(X_train,y_train)
+subtrees=[]
+for alpha in cost_path.ccp_alphas:
+    subtree=DecisionTreeClassifier(ccp_alpha=alpha)
+    subtree.fit(X_train,y_train)
+    subtrees.append(subtree)
+subtree_scores=[subtree.score(X_val,y_val) for subtree in subtrees]
+ ```   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
