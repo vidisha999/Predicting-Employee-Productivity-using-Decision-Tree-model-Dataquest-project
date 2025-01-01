@@ -37,8 +37,59 @@ The following insights were made by performing the EDA on the dataset:
   - Average productivity was less in last two quarters compared to the first two quarters.
   - With the increase of `no_of_style_change` the targeted productivity has decreased.
   - None of the numerical columns show significant impact on the targeted productivity.
-- As the final set of features, `department`, `day`, `team`, `no-of-style-change` and `quarter` columns were selected.
+- As the final set of features, `department`, `day`, `team`, `no-of-style-change`,`no_of_workers`,`over_time`,`smv`,`incentive` and `quarter` columns were selected.
  
-### Feature Transformation 
+### IV.Feature Transformation 
+Prior feeding the data to the machine learning model, the selected categorical columns were transformed into numerical columns. 
+The following code was used for the transformation of features : 
+```python
+from sklearn.compose import make_column_transformer
+from sklearn.preprocessing import OneHotEncoder,OrdinalEncoder
+transform_cols=make_column_transformer((OneHotEncoder(),['department','day','team','no_style_of_change']),
+                                       (OrdinalEncoder(),['quarter']),remainder='passthrough',
+                                        verbose_feature_names_out=False)
+column_names=transform_cols.get_feature_names_out()
+transform_df=transform_cols.fit_transform(clean_df)
+final_df=pd.DataFrame(transform_df,cols=column_names)
+```
+
+## Model Building 
+
+The decision tree models can be used for two scenarios. 
+ - The **DecisionTreeClassifier** model could be used to classify if the target variable `target_acheived` was achieved or not.
+ - The **DecisionTreeRegressor** model could be used to predict the continuous value of target variable `targeted_productivity`.
+ - The focus of this project is framed to use **DecisionTreeClassifier** for the classification task of target variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
