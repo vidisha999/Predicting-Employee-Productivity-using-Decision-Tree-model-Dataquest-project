@@ -112,9 +112,9 @@ class_report=classification_report(y_test,y_predict)
 ```
 - Both the validation accuracy and test accuracy of the tree model was 81.6% which is higher than test accuracy of the unpruned tree.
 - Based on the classification report the recall or the sensitivity of the model is 96% which is an excellent value.
-- It is further shown by the [confusion matrix](Images/decision_tree_image5.png), indicating the model is great at classifying positive classes which shows when the `targeted_productivity` was achieved.
+- It is further shown by the [confusion matrix](Images/decision_tree_image6.png), indicating the model is great at classifying positive classes which shows when the `targeted_productivity` was achieved.
 
-The [graphical representation of the Decision Tree](Images/decision_tree_image6.png) drawn on the best pruned decision tree shows `incentive`,no_of_workers`,`smv` are the most impactful attributes on the `targeted_productivity` as they appear multiple times on the decision tree diagram contributing the decision made at the terminal leaf.
+The [graphical representation of the Decision Tree](Images/decision_tree_image5.png) drawn on the best pruned decision tree shows `incentive`,no_of_workers`,`smv` are the most impactful attributes on the `targeted_productivity` as they appear multiple times on the decision tree diagram contributing the decision made at the terminal leaf.
 
 The [feature importance plot](Images/decision_tree_image7.png) shows `incentive` has the highest impact on the productvity of the production process along with `smv` and `no_of_workers`. `day_Monday` and `over_time` also contributed a certain amount of impact on the productivity of employess while rest of the attributes had caused no impact at all. 
 
