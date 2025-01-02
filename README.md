@@ -95,6 +95,45 @@ for alpha in cost_path.ccp_alphas:
 subtree_scores=[subtree.score(X_val,y_val) for subtree in subtrees]
  ```   
 
+The [subtree scores Vs. alpha plot](Images/decision_tree_images4.png) shows how the scoring accuracy of each subtree varies with their corresponding alpha values. 
+
+The subtree with the highest scoring accuracy and its alpha value is used to find out the best tree and tested on the test dataset to determine the test accuracy as shown in the below code: 
+
+```python
+sklearn.metrics import classification_report
+alpha_scores=tuple(zip(cost_path.ccp_alphas,subtree_scores))
+val_accuracy=max(alpha_scores,key=lambda x: x[1]) # selects the second element of the tuple object
+
+best_score_index=np.argmax(subtree_scores)
+best_pruned_tree=subtrees[best_score_index)
+test_score=best_pruned_tree.score(X_test,y_test)
+y_predict=best_pruned_tree.predict(y_test)
+class_report=classification_report(y_test,y_predict)
+```
+- Both the validation accuracy and test accuracy of the tree model was 81.6% which is higher than test accuracy of the unpruned tree.
+- Based on the classification report the recall or the sensitivity of the model is 96% which is an excellent value.
+- It is further shown by the [confusion matrix](Images/decision_tree_images5.png), indicating the model is great at classifying positive classes which shows when the `targeted_productivity` was achieved.
+
+The [graphical representation of the Decision Tree](Images/decision_tree_images5.png) drawn on the best pruned decision tree shows `incentive`,no_of_workers`,`smv` are the most impactful attributes on the `targeted_productivity` as they appear multiple times on the decision tree diagram contributing the decision made at the terminal leaf.
+
+The [feature importance plot](Images/decision_tree_images6.png) shows `incentive` has the highest impact on the productvity of the production process along with `smv` and `no_of_workers`. `day_Monday` and `over_time` also contributed a certain amount of impact on the productivity of employess while rest of the attributes had caused no impact at all. 
+
+### II.RandomForestClassifier model
+
+For the purpose of selecting the optimal model, the  random forest tree model which is an ensemble decison tree model was built:
+```python
+random_tree=RandomForestClassifier(oob_score=True,random_state=42)
+random_tree.fit(X_train,y_train)
+rf_y_predict=random_tree.predict(X_test)
+rf_accuracy_score=random_tree.score(y_test,y_predict)
+```
+The accuracy score obtained was around 80% which is less than value gained from the best pruned decision tree. So, that retraining the RandomForestClassifier with only using the highly impacted features selected from the analysis  DecisionTreeClassifier, could improve the test accuracy.
+
+## Conclusion 
+
+One of the most important takeaways from this project is the importance of feature selection and preprocessing in improving model performance. Another important takeaway is that while ensemble methods such as random forests can improve the accuracy of a model, they are not always necessary. In this project, we found that the decision tree model was already quite robust and that the random forest model did not significantly outperform it in terms of accuracy.
+
+
 
 
 
