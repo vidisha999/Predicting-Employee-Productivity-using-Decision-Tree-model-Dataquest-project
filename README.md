@@ -32,7 +32,7 @@ The following insights were made by performing the EDA on the dataset:
 
  ### III.Feature Engineering 
 
-- In the feature selection phase, [boxplot diagram](Images/decision_tree_images2.png) was plotted to understand the relationship between the categorical columns with the targeted variable and a [scatterplot](Images/decision_tree_images3.png) was plotted to explore the relationship between the numerical variables with the target variable.
+- In the feature selection phase, [boxplot diagram](Images/decision_tree_image2.png) was plotted to understand the relationship between the categorical columns with the targeted variable and a [scatterplot](Images/decision_tree_image3.png) was plotted to explore the relationship between the numerical variables with the target variable.
   - Based on the above plots, it can be seen the categorical columns `day` and `department` had no impact on the `targeted_productivity`.
   - Average productivity was less in last two quarters compared to the first two quarters.
   - With the increase of `no_of_style_change` the targeted productivity has decreased.
